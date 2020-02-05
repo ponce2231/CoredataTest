@@ -25,6 +25,11 @@ class ViewController: UIViewController {
         title = "The List"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchData()
+    }
 
 //    MARK: Actions
     @IBAction func addName(_ sender: UIBarButtonItem) {
@@ -47,6 +52,7 @@ class ViewController: UIViewController {
     }
 //    MARK: STORE TO COREDATA
     func save(name: String) {
+        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
             return
         }
@@ -55,6 +61,7 @@ class ViewController: UIViewController {
         
 //        MARK: STEP 2
         let entity = NSEntityDescription.entity(forEntityName: "Person", in: managedContext)!
+        
         let person = NSManagedObject(entity: entity, insertInto: managedContext)
         
 //        MARK: STEP 3
@@ -63,8 +70,26 @@ class ViewController: UIViewController {
 //        MARK: STEP 4
         do{
             try managedContext.save()
+            people.append(person)
         }catch let error as NSError{
             print("Could not save \(error), \(error.userInfo) ")
+        }
+    }
+    
+//    MARK: FETCH DATA FROM COREDATA
+    func fetchData() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+//        MARK: STEP 1
+        let managedContext = appDelegate.persistentContainer.viewContext
+//        MARK: STEP 2
+        let fetchedRequest = NSFetchRequest<NSManagedObject>(entityName: "Person")
+//        MARK: STEP 3
+        do {
+            people = try managedContext.fetch(fetchedRequest)
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo) ")
         }
     }
 }

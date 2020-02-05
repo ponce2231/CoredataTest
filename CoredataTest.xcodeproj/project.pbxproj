@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -60,6 +60,7 @@
 			children = (
 				0B15EE2F23EAFE410001AD70 /* AppDelegate.swift */,
 				0B15EE3123EAFE410001AD70 /* SceneDelegate.swift */,
+				0B15EE3523EAFE410001AD70 /* Main.storyboard */,
 				0B15EE4023EAFE440001AD70 /* Info.plist */,
 				0B15EE4823EB07210001AD70 /* Model */,
 				0B15EE4723EB07110001AD70 /* View */,
@@ -79,7 +80,6 @@
 		0B15EE4723EB07110001AD70 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0B15EE3523EAFE410001AD70 /* Main.storyboard */,
 				0B15EE3B23EAFE440001AD70 /* Assets.xcassets */,
 				0B15EE3D23EAFE440001AD70 /* LaunchScreen.storyboard */,
 			);
@@ -130,7 +130,7 @@
 				};
 			};
 			buildConfigurationList = 0B15EE2723EAFE410001AD70 /* Build configuration list for PBXProject "CoredataTest" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (

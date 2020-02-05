@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: variables
-    var name: [String] = []
+    var names: [String] = []
     
     
     override func viewDidLoad() {
@@ -28,5 +28,22 @@ class ViewController: UIViewController {
     @IBAction func addName(_ sender: UIBarButtonItem) {
         
     }
+}
+
+extension ViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return names.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        cell.textLabel?.text = names[indexPath.row]
+        
+        return cell
+    }
+    
+    
 }
 
